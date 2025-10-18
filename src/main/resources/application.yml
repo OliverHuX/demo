@@ -1,0 +1,5 @@
+spring:
+    application:
+        name: demo
+data:
+    url: https://eccdn.com.au/misc/challengedata.json
