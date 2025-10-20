@@ -6,7 +6,7 @@ public record NormalisedDeal(
     String restaurantObjectId,
     String restaurantName,
     String restaurantAddress1,
-    String restarantSuburb,
+    String restaurantSuburb,
     LocalTime start,
     LocalTime end,
     String dealObjectId,
