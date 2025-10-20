@@ -76,12 +76,12 @@ public class DealLoader {
             
             LocalTime start = Objects.nonNull(startRaw) ? TimeUtils.parseTime(startRaw) : TimeUtils.parseTime(openRaw);
             // Ensure deal start is not before restaurant open
-            start = start.isBefore(restaurantOpen) ? restaurantOpen : start;
+            start = Objects.nonNull(start) ? start.isBefore(restaurantOpen) ? restaurantOpen : start : restaurantOpen;
             
             LocalTime end = Objects.nonNull(endRaw) ? TimeUtils.parseTime(endRaw) : TimeUtils.parseTime(closeRaw);
             // Ensure deal end is not after restaurant close
-            end = end.isAfter(restaurantClose) ? restaurantClose : end;
-            
+            end = Objects.nonNull(end) ? end.isAfter(restaurantClose) ? restaurantClose : end : restaurantClose;
+
             boolean dineIn = deal.has("dineIn") && deal.get("dineIn").asBoolean();
             boolean lightning = deal.has("lightning") && deal.get("lightning").asBoolean();
             int qtyLeft = deal.has("qtyLeft") ? deal.get("qtyLeft").asInt() : 0;
