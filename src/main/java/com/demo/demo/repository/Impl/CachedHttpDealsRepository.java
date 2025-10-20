@@ -23,11 +23,16 @@ public class CachedHttpDealsRepository implements DealsRepository{
     public List<NormalisedDeal> findAllActiveDeals(String timeOfDay) {
         try {
             LocalTime queryTime = TimeUtils.parseTime(timeOfDay);
+            
+            if (Objects.isNull(queryTime)) {
+                return dealLoader.loadAll();
+            }
+            
             return dealLoader.loadAll().stream()
                     .filter(deal -> {
                         LocalTime dealStart = Objects.nonNull(deal.start()) ? deal.start() : deal.restaurantOpen();
                         LocalTime dealEnd = Objects.nonNull(deal.end()) ? deal.end() : deal.restaurantClose();
-                        if (dealStart == null || dealEnd == null || queryTime == null) {
+                        if (dealStart == null || dealEnd == null) {
                             return false;
                         }
                         return !queryTime.isBefore(dealStart) && !queryTime.isAfter(dealEnd);

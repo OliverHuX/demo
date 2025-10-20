@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.demo.DTO.DealResponse;
+import com.demo.demo.DTO.PeakWindowResponse;
 import com.demo.demo.service.DealService;
 
 import lombok.Data;
@@ -27,5 +28,9 @@ public class DealController {
         return ResponseEntity.ok(dealService.getDealsActiveAt(timeOfDay));
     }
     
+    @GetMapping("/peak-window")
+    public ResponseEntity<PeakWindowResponse> getPeakWindow() {
+        return ResponseEntity.ok(dealService.getPeakDealWindow());
+    }
     
 }

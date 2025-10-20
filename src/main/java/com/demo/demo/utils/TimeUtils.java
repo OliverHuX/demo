@@ -18,6 +18,14 @@ public class TimeUtils {
 
     private static final DateTimeFormatter TIME_FORMATTER_AM_PM = DateTimeFormatter.ofPattern("hh:mm a");
 
+    /**
+     * Parses a time string into a LocalTime object.
+     * Accepts formats like "2PM", "02:00PM", "14:00", etc.
+     * Returns null if the input is null or blank.
+     * @param time the time string to parse
+     * @return the parsed LocalTime object or null
+     * @throws IllegalArgumentException if the time format is unrecognized
+     */
     public static LocalTime parseTime(String time) {
         if (Objects.isNull(time) || time.isBlank()) {
             return null;
@@ -40,6 +48,11 @@ public class TimeUtils {
         
     }
     
+    /**
+     * Formats a LocalTime object into a string in "hh:mm AM/PM" format.
+     * @param time the LocalTime object to format
+     * @return formatted time string
+     */
     public static String formatTime(LocalTime time) {
         if (Objects.isNull(time)) {
             return null;
