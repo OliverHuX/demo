@@ -16,6 +16,8 @@ public class TimeUtils {
         DateTimeFormatter.ofPattern("HH:mm").withLocale(Locale.ROOT)
     );
 
+    private static final DateTimeFormatter TIME_FORMATTER_AM_PM = DateTimeFormatter.ofPattern("hh:mm a");
+
     public static LocalTime parseTime(String time) {
         if (Objects.isNull(time) || time.isBlank()) {
             return null;
@@ -36,5 +38,12 @@ public class TimeUtils {
         
         throw new IllegalArgumentException("Unrecognized time format: " + time);
         
+    }
+    
+    public static String formatTime(LocalTime time) {
+        if (Objects.isNull(time)) {
+            return null;
+        }
+        return time.format(TIME_FORMATTER_AM_PM);
     }
 }
