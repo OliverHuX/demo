@@ -75,7 +75,12 @@ public class DealLoader {
             String closeRaw = text(deal, "close");
             
             LocalTime start = Objects.nonNull(startRaw) ? TimeUtils.parseTime(startRaw) : TimeUtils.parseTime(openRaw);
+            // Ensure deal start is not before restaurant open
+            start = start.isBefore(restaurantOpen) ? restaurantOpen : start;
+            
             LocalTime end = Objects.nonNull(endRaw) ? TimeUtils.parseTime(endRaw) : TimeUtils.parseTime(closeRaw);
+            // Ensure deal end is not after restaurant close
+            end = end.isAfter(restaurantClose) ? restaurantClose : end;
             
             boolean dineIn = deal.has("dineIn") && deal.get("dineIn").asBoolean();
             boolean lightning = deal.has("lightning") && deal.get("lightning").asBoolean();
