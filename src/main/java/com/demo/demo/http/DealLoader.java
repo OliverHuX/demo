@@ -16,10 +16,10 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
-@Data
 @Component
+@RequiredArgsConstructor
 public class DealLoader {
     
     private final RestClient restClient;

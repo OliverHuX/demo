@@ -26,7 +26,7 @@ public class DealController {
     private final DealService dealService;
     
     @GetMapping("")
-    public ResponseEntity<List<DealResponse>> getDeals(@RequestParam String timeOfDay) {
+    public ResponseEntity<List<DealResponse>> getDeals(@RequestParam(required = false) String timeOfDay) {
         return ResponseEntity.ok(dealService.getDealsActiveAt(timeOfDay));
     }
     

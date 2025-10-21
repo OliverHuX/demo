@@ -1,7 +1,5 @@
 package com.demo.demo.DTO;
 
-import java.time.LocalTime;
-
 public record DealResponse(
     String restaurantObjectId,
     String restaurantName,
