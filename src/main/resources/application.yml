@@ -3,3 +3,9 @@ spring:
         name: demo
 data:
     url: https://eccdn.com.au/misc/challengedata.json
+    
+springdoc:
+    api-docs:
+        path: /v3/api-docs
+    swagger-ui:
+        path: /swagger-ui.html

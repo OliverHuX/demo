@@ -7,6 +7,7 @@ import com.demo.demo.DTO.DealResponse;
 import com.demo.demo.DTO.PeakWindowResponse;
 import com.demo.demo.service.DealService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Data
 @RestController
+@Tag(name = "Deal Controller", description = "APIs for retrieving deal information")
 @RequestMapping("/api/deals")
 public class DealController {
 
